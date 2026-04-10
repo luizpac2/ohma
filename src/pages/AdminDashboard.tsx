@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
-import { useAuth } from '@/hooks/useAuth'
 import type { Equipe, Fase, Pontuacao, Penalidade, Membro } from '@/types'
 import AdminHeader from '@/components/AdminHeader'
 
 type Tab = 'equipes' | 'pontuacao' | 'fases' | 'penalidades' | 'usuarios'
 
 export default function AdminDashboard() {
-  const { user, signOut } = useAuth()
   const [tab, setTab] = useState<Tab>('equipes')
   const [equipes, setEquipes] = useState<Equipe[]>([])
   const [fases, setFases] = useState<Fase[]>([])

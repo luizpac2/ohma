@@ -145,16 +145,42 @@ export default function PublicScoreboard() {
                   NENHUMA EQUIPE CADASTRADA
                 </div>
               ) : (
-                ranking.map((equipe, i) => (
-                  <TeamCard
-                    key={equipe.id}
-                    equipe={equipe}
-                    position={i + 1}
-                    isLeader={i === 0}
-                    showBreakdown={true}
-                    animationDelay={i * 0.08}
-                  />
-                ))
+                <>
+                  {/* Top 3 - Expandidos */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {ranking.slice(0, 3).map((equipe, i) => (
+                      <TeamCard
+                        key={equipe.id}
+                        equipe={equipe}
+                        position={i + 1}
+                        isLeader={i === 0}
+                        showBreakdown={true}
+                        animationDelay={i * 0.08}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Restante - Grid Compacto */}
+                  {ranking.length > 3 && (
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                      gap: '12px',
+                      marginTop: '6px'
+                    }}>
+                      {ranking.slice(3).map((equipe, i) => (
+                        <TeamCard
+                          key={equipe.id}
+                          equipe={equipe}
+                          position={i + 4}
+                          isLeader={false}
+                          showBreakdown={false}
+                          animationDelay={0.3 + (i * 0.05)}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </>
               )}
             </motion.div>
           )}

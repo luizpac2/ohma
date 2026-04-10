@@ -68,6 +68,7 @@ export function TeamCard({
         minWidth: '48px',
         textAlign: 'center',
         flexShrink: 0,
+        fontWeight: 700,
       }}>
         {position}
       </div>
@@ -85,11 +86,12 @@ export function TeamCard({
         <div style={{
           fontFamily: 'var(--font-display)',
           fontSize: '22px',
-          letterSpacing: '0.04em',
+          letterSpacing: '0.06em',
           color: isLeader ? 'var(--color-ohma-gold)' : 'var(--color-ohma-text)',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
+          fontWeight: 600,
         }}>
           {equipe.nome}
         </div>
@@ -114,7 +116,8 @@ export function TeamCard({
           fontSize: '42px',
           lineHeight: 1,
           color: isLeader ? 'var(--color-ohma-gold)' : 'var(--color-ohma-text)',
-          letterSpacing: '0.02em',
+          letterSpacing: '0.04em',
+          fontWeight: 700,
         }}
           className={isLeader ? 'glow-text-gold' : ''}
         >

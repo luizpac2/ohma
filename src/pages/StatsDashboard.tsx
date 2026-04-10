@@ -6,6 +6,7 @@ import {
 } from 'recharts'
 import { supabase } from '@/lib/supabase'
 import type { RankingRow, Penalidade, Questao, Fase } from '@/types'
+import AdminHeader from '@/components/AdminHeader'
 
 export default function StatsDashboard() {
   const [ranking, setRanking] = useState<RankingRow[]>([])
@@ -62,8 +63,10 @@ export default function StatsDashboard() {
   )
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--color-ohma-bg)', padding: '32px 40px' }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--color-ohma-bg)' }}>
+      <AdminHeader />
+      <div style={{ padding: '32px 40px' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: -16 }} animate={{ opacity: 1, y: 0 }} style={{ marginBottom: '36px' }}>
@@ -174,6 +177,7 @@ export default function StatsDashboard() {
             </table>
           </Section>
         )}
+      </div>
       </div>
     </div>
   )

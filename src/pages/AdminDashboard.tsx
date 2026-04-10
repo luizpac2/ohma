@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import type { Equipe, Fase, Pontuacao, Penalidade, Membro } from '@/types'
+import AdminHeader from '@/components/AdminHeader'
 
 type Tab = 'equipes' | 'pontuacao' | 'fases' | 'penalidades' | 'usuarios'
 
@@ -161,25 +162,8 @@ export default function AdminDashboard() {
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--color-ohma-bg)' }}>
-      {/* Topbar */}
-      <header style={{
-        borderBottom: '1px solid var(--color-ohma-border)',
-        padding: '16px 32px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        background: 'var(--color-ohma-surface)',
-      }}>
-        <div style={{ fontFamily: 'var(--font-display)', fontSize: '28px', color: 'var(--color-ohma-gold)', letterSpacing: '0.1em' }}>
-          OHMA — ADMINISTRAÇÃO
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <span style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--color-ohma-text-muted)' }}>
-            {user?.email} · <strong style={{ color: 'var(--color-ohma-gold)' }}>{user?.role}</strong>
-          </span>
-          <button onClick={signOut} style={ghostBtnStyle}>Sair</button>
-        </div>
-      </header>
+      {/* Topbar navigations */}
+      <AdminHeader />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '32px' }}>
         {/* Tabs */}

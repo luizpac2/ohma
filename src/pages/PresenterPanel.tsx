@@ -2,6 +2,7 @@ import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import type { RevealEvent } from '@/types'
+import AdminHeader from '@/components/AdminHeader'
 
 export default function PresenterPanel() {
   const [speed, setSpeed] = useState<'suspense' | 'rapido'>('suspense')
@@ -45,14 +46,15 @@ export default function PresenterPanel() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: 'var(--color-ohma-bg)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: '24px',
-    }}>
+    <div style={{ minHeight: '100vh', background: 'var(--color-ohma-bg)', display: 'flex', flexDirection: 'column' }}>
+      <AdminHeader />
+      <div style={{
+        flex: 1,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '24px',
+      }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
@@ -187,6 +189,7 @@ export default function PresenterPanel() {
           O evento é transmitido via Realtime para todos os clientes conectados em <strong style={{ color: 'var(--color-ohma-text)' }}>/placar</strong>
         </div>
       </motion.div>
+      </div>
     </div>
   )
 }
